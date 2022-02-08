@@ -53,22 +53,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return Padding(
                         padding: const EdgeInsets.only(left: 25,right: 25),
                         child: Container(
+
+
                           height:60 ,
                           decoration: BoxDecoration(
                             color: Colors.grey.shade100,
                             borderRadius:  BorderRadius.circular(32),
                           ),
 
-                          child: TextField(
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              hintText: "Name",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top:30),
+                            child: TextFormField(
+                              autovalidateMode:AutovalidateMode.onUserInteraction ,
+                              keyboardType: TextInputType.text,
+                              decoration: InputDecoration(
+                                hintText: "Name",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                 errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 25,left: 20,bottom:5),
+                              ),
+                              onChanged: (value) => bloc.changeName(value),
                             ),
-                            onChanged: (value) => bloc.changeName(value),
                           ),
                         ),
                       );
@@ -85,16 +91,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.grey.shade100,
                             borderRadius:  BorderRadius.circular(32),
                           ),
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                              hintText: "Email",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                hintText: "Email",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 5),
+                              ),
+                              onChanged: bloc.changeEmailId,
                             ),
-                            onChanged: bloc.changeEmailId,
                           ),
                         ),
                       );
@@ -111,16 +120,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.grey.shade100,
                             borderRadius:  BorderRadius.circular(32),
                           ),
-                          child: TextField(
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              hintText: "Mobile No",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                hintText: "Mobile No",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 5),
+                              ),
+                              onChanged: bloc.changePhoneNumber,
                             ),
-                            onChanged: bloc.changePhoneNumber,
                           ),
                         ),
                       );
@@ -137,16 +149,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.grey.shade100,
                             borderRadius:  BorderRadius.circular(32),
                           ),
-                          child: TextField(
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              hintText: "Address",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                hintText: "Address",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 5),
+                              ),
+                              onChanged: bloc.changeaddess,
                             ),
-                            onChanged: bloc.changeaddess,
                           ),
                         ),
                       );
@@ -163,17 +178,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: Colors.grey.shade100,
                             borderRadius:  BorderRadius.circular(32),
                           ),
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            obscureText: true,
-                            decoration: InputDecoration(
-                              hintText: "Password",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.emailAddress,
+                              obscureText: true,
+                              decoration: InputDecoration(
+                                hintText: "Password",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 20,left: 20,bottom:5),
+                              ),
+                              onChanged: bloc.changePassword,
                             ),
-                            onChanged: bloc.changePassword,
                           ),
                         ),
                       );
@@ -191,27 +209,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             borderRadius:  BorderRadius.circular(32),
                           ),
 
-                          child: TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            obscureText: isVisible,
-                            decoration: InputDecoration(
-                              hintText: "Confirm Password",
-                              hintStyle: TextStyle(color: Colors.grey),
-                              // errorText: snapshot.error.toString(),
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 20),
-                              suffixIcon: IconButton(
-                                icon: isVisible
-                                    ? Icon(Icons.visibility_off)
-                                    : Icon(Icons.visibility),
-                                onPressed: () {
-                                  setState(() {
-                                    isVisible = !isVisible;
-                                  });
-                                },
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.emailAddress,
+                              obscureText: isVisible,
+                              decoration: InputDecoration(
+                                hintText: "Confirm Password",
+                                hintStyle: TextStyle(color: Colors.grey),
+                                errorText: snapshot.hasError ? snapshot.error.toString() : '',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(top: 20,left: 20,bottom: 5),
+                                suffixIcon: IconButton(
+                                  icon: isVisible
+                                      ? Icon(Icons.visibility_off)
+                                      : Icon(Icons.visibility),
+                                  onPressed: () {
+                                    setState(() {
+                                      isVisible = !isVisible;
+                                    });
+                                  },
+                                ),
                               ),
+                              onChanged: bloc.changeConfirmPassword,
                             ),
-                            onChanged: bloc.changeConfirmPassword,
                           ),
                         ),
                       );
@@ -253,11 +274,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
         stream: bloc.isValid,
         builder: (context, snapshot) {
           return GestureDetector(
-            onTap: snapshot.hasError || !snapshot.hasData
-                ? null
-                : () {
+            onTap: snapshot.hasError || !snapshot.hasError
+                ? () {
               bloc.submit();
-            },
+            }: null,
+
+
             child:Padding(
               padding: const EdgeInsets.only(left: 25,right: 25),
               child: Container(
